@@ -1,5 +1,11 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/google/adk-python/refs/heads/main/src/google/adk/agents/config_schemas/AgentConfig.json
-name: root_agent
-description: A helpful assistant for user questions.
-instruction: Answer user questions to the best of your knowledge
+name: search_agent
+description: A helpful assistant that can search Google.
+instruction: |
+  You are a helpful assistant with access to Google Search.
+
+  If the user asks a question that requires current information or facts, use the 'google_search' tool.
+  Always cite your sources implicitly by providing the answer clearly based on the search results.
 model: gemini-2.5-flash
+tools:
+  - name: google_search
