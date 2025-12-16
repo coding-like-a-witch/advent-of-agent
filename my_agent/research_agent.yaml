@@ -35,4 +35,4 @@ tools:
           - "-y"
           - "firecrawl-mcp"
         env:
-          FIRECRAWL_API_KEY: "fc-34bd4b5407404e0aab52943c90953539"
+          FIRECRAWL_API_KEY: "${FIRECRAWL_API_KEY}"
