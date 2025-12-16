@@ -140,9 +140,11 @@ Evaluating agents focuses on **end-to-end behavior**, not single responses.
 
 Common approaches:
 
-• Business Key Performance Indicators (**KPIs**): Evaluation must start by defining KPIs that measure the real-world impact of the agent, such as goal completion rates, user satisfaction scores, and the direct impact on business goals like revenue or customer retention.
+• **Business Key Performance Indicators (KPIs)**: Evaluation must start by defining KPIs that measure the real-world impact of the agent, such as goal completion rates, user satisfaction scores, and the direct impact on business goals like revenue or customer retention.
+
 • **LM as Judge**: A powerful language model is used to assess the agent's output quality against a predefined rubric (e.g., factual grounding, tone, adherence to instructions). This automated evaluation is run against a golden dataset (evaluation dataset) consisting of ideal questions and correct responses, providing a consistent measure of quality.
-• Metrics-Driven Development: This approach uses evaluation results to confidently test changes. New versions of the agent are run against the **entire evaluation dataset**, and their scores, along with latency and cost metrics, are compared directly against the existing production version before deployment (a "Go/No-Go" decision)
+
+• **Metrics-Driven Development**: This approach uses evaluation results to confidently test changes. New versions of the agent are run against the **entire evaluation dataset**, and their scores, along with latency and cost metrics, are compared directly against the existing production version before deployment (a "Go/No-Go" decision)
 
 ---
 
