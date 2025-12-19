@@ -20,6 +20,9 @@
 - 后续使用方便起见，这次直接安装了完整的 `google-adk` 包
 - 注意⚠️：其中的 `MCP` 组件强制要求Python版本在**3.10**以上，新建环境时要注意编译器的选择
 - 在Pycharm终端调用agent互动时，无法显式输出日志，只能通过prompt要求输出思考过程
+- 网站上给的 command 是错误的，运行 `uvx --from google-adk adk web` 时默认时读取 a directory of agents，而不是在 agent directory。
+- Tutorial: AI agent with Google Search(YAML) instruction 也是错的. `adk web` 运行的时候directory应该在agent的parent folder里。
+- Tutorial: Multi-agent app with MCP (YAML) 要安装Node.Js 是firecrawl的dependency。firecrawl需要注册，free tier不需要花钱，api key能在设置里找到。
 
 ## Code Examples
 
@@ -46,6 +49,20 @@ model: gemini-2.5-flash
 tools:
   - name: google_search
 ```
+### `adk api_server` 的使用
+以调取api的模式使用agent不能直接点击网页或者和UI直接交互。just in case有人和我一样不懂怎么调取api，下面是使用范例。
+
+输入`adk api_server` 之后新开一个terminal
+```bash
+curl -X POST http://localhost:8000/apps/my_agent/users/u_123/sessions/s_123 -H "Content-Type: application/json"
+```
+apps 后面是agent的名字，user后面是userId，session后面是sessionId.
+
+```bash
+curl -X POST http://localhost:8000/run -H "Content-Type: application/json" -d '{"appName":"my_agent", "userId":"u_123", "sessionId":"s_123", "newMessage": {"role": "user", "parts":[{"text": "hello"}]}}'
+```
+app_name、userId、sessionId需要和上文对应。text后输入user想说的话。
+你会在这个terminal看到model的回复。
 
 ## Resources
 
